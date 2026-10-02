@@ -1,0 +1,809 @@
+{
+  "manifest_path": "manifests/rust-validator-plugin.manifest.yaml",
+  "manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+  "test_hashes": {
+    "tests/test_validator.py": "sha256-pyast:v2:df0421efcbe368b55a367e819b31875a9a37fd5c46c5c5f92eccbe1dcf81a9ab",
+    "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+  },
+  "created_at": "2026-10-02T00:35:25.810534+00:00",
+  "revision": 29,
+  "revisions": [
+    {
+      "prior_manifest_hash": "sha256-contract:5e060c16c03543a6981961e9259d5e553dabc04066caa16d4dd6dd95dcc98257",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:42c52d99e43cf0340ea11908f1ec91bd8ec00cc9e52828d644382c04238decf7",
+        "tests/test_conformance.py": "sha256-pyast:v2:61327437d58e772224c2b194f8687bc8554c900168b67bbf91c1d1493dd4d915"
+      },
+      "revised_at": "2026-10-02T00:35:26.411445+00:00",
+      "reason": "Migrated by maid manifest promote: manifests/drafts/rust-validator-plugin.manifest.yaml -> manifests/rust-validator-plugin.manifest.yaml",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:9d412b7d62ab4c037717691c22ba0d42826e1ffcc6d90784610be94e741ca9f0",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:42c52d99e43cf0340ea11908f1ec91bd8ec00cc9e52828d644382c04238decf7",
+        "tests/test_conformance.py": "sha256-pyast:v2:61327437d58e772224c2b194f8687bc8554c900168b67bbf91c1d1493dd4d915"
+      },
+      "revised_at": "2026-10-02T00:43:11.496694+00:00",
+      "reason": "Add binding, generics, privacy and path regressions discovered during integration checks",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:9d412b7d62ab4c037717691c22ba0d42826e1ffcc6d90784610be94e741ca9f0",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:d6752fe3ff52d5e64e118f3817930067e5c6a2a9dee47ebd006f64cc8df47b59",
+        "tests/test_conformance.py": "sha256-pyast:v2:61327437d58e772224c2b194f8687bc8554c900168b67bbf91c1d1493dd4d915"
+      },
+      "revised_at": "2026-10-02T00:45:33.566863+00:00",
+      "reason": "Require syntactic type evidence for associated owners and avoid assuming new returns Self",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:9d412b7d62ab4c037717691c22ba0d42826e1ffcc6d90784610be94e741ca9f0",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:928ddb9a27ac23421e96655727f156bd132b859f9af7416ace432b34cca7757b",
+        "tests/test_conformance.py": "sha256-pyast:v2:61327437d58e772224c2b194f8687bc8554c900168b67bbf91c1d1493dd4d915"
+      },
+      "revised_at": "2026-10-02T00:49:46.614518+00:00",
+      "reason": "Add explicit conformance privacy assertion for private trait implementations",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:9d412b7d62ab4c037717691c22ba0d42826e1ffcc6d90784610be94e741ca9f0",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:928ddb9a27ac23421e96655727f156bd132b859f9af7416ace432b34cca7757b",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T00:59:19.465328+00:00",
+      "reason": "Harden conditional tests, lexical identities, target roots and module import matching",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [
+          "src/maid_validator_rust/validator.py:method:RustValidator.module_path",
+          "src/maid_validator_rust/validator.py:method:RustValidator.module_path:arg=file_path:type=str | Path:default=None",
+          "src/maid_validator_rust/validator.py:method:RustValidator.module_path:arg=project_root:type=Path:default=None",
+          "src/maid_validator_rust/validator.py:method:RustValidator.module_path:kind=method",
+          "src/maid_validator_rust/validator.py:method:RustValidator.module_path:of=RustValidator",
+          "src/maid_validator_rust/validator.py:method:RustValidator.module_path:returns=str | None"
+        ],
+        "artifacts_removed": [],
+        "files_added": [
+          "scope:src/maid_validator_rust/_modules.py"
+        ],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:d2c53491f8e024ea9f6dea772672a1fa09406981f7533ad68fe31a152d956339",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T01:08:59.771208+00:00",
+      "reason": "Verify Runner module identity integration across working directories",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:6c20d6e0a4b1cf299c14ac9b1993e7d3e67083033665e57bcb1e683dc25f52fa",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T01:21:44.966017+00:00",
+      "reason": "Conservatively handle cfg syntax and isolate lexical module/type/import identities",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:4c446b4b0d110f94082844106974c8498cb6959f27922bbc51365863f12a29f5",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T01:42:57.251787+00:00",
+      "reason": "Preserve fully qualified bindings and exclude disabled or deferred syntax evidence",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:8f19493c8ecd677d9b5aa1e4013b608e16b9cca05930d0c56f2f5bee865fcd9b",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T01:51:36.074894+00:00",
+      "reason": "Resolve namespace alias chains and separate assertion macro bindings from values",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:6fb88ef206a9220051c011bcd62d5da43f0a2224533021fad2328f9c4a3eac59",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T02:00:33.025799+00:00",
+      "reason": "Resolve project crate qualifiers and preserve standard macro namespace against value bindings",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:829dc3c32860da39f39ea2583317986a9c3648cb38273449a773514affda4c49",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T02:13:20.686280+00:00",
+      "reason": "Keep enum variants distinct from methods and preserve qualified private artifact visibility",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:08aa3f88576745f803a238a9813b9eedb0c462ca58ba359311baefc531291a61",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T02:32:37.850932+00:00",
+      "reason": "Match Cargo implicit binary paths, parent impl owners and standalone standard macro imports",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:aba16ef8852b3d03c7ec5de8585d72ac2add64ecd00840300825563719d30ad8",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T02:52:22.355329+00:00",
+      "reason": "Preserve type tokens, inline paths and Rust eager-expression and textual binding semantics",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:671c6e0e299751f49f665deccf300dda41bb75fc01d4dfe81ebf6d42ce24d846",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:a7336b31dddc94fc19469e1ec6524c0f1a0eb84256b5c848595933780d575389",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T02:57:47.573475+00:00",
+      "reason": "Document source-reference and runtime-evidence boundaries without broad control-flow interpretation",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:a7336b31dddc94fc19469e1ec6524c0f1a0eb84256b5c848595933780d575389",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T03:11:57.200774+00:00",
+      "reason": "Respect Rust type/value namespaces, constant shadowing and absolute paths",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:11eb7a913f8cc61ee625b033b6adfb9b273e7321c8e39d9f1348c75b8741d404",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T03:15:19.963160+00:00",
+      "reason": "Keep callable functions distinct from type-namespace constructor names",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:e9e5ddcf435ec183fabfb7aaa636468a087deeb174811753661d5dfe6d4654c2",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T03:34:42.799523+00:00",
+      "reason": "Respect module constant shadowing and qualified same-file API visibility",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:634d33211e0d1cb919d2ca3023954896d7d8617f9c52b5578a9bb6831d18a2b6",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T03:45:43.237448+00:00",
+      "reason": "Track let-chain lexical bindings and qualified unit-struct constructor references",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:c4c16dfed6d5fee3a0fd7bb611598fe0918b353d44f5590b3a537919d814493b",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T03:58:29.673449+00:00",
+      "reason": "Resolve impl aliases, explicit ref bindings and parenthesized callee kinds",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:970899ef7be9d1d28bd52e4b20b3675c6dbc52110b93a590843a9e1ecc5310c0",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T04:11:21.815060+00:00",
+      "reason": "Preserve class kind for qualified tuple-struct constructor calls",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:961111a6d2a3c129afc252269f64740c3c0da2d233d6a31c2f2383e89b08c702",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T04:24:10.740757+00:00",
+      "reason": "Keep same-file aliases and imported enum/type-alias construction identities",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:4211616f92bf6c9aa458fe677aa46d5172c3c15ba4c06ad7c818d5dc6992e5f7",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T04:36:50.880847+00:00",
+      "reason": "Preserve source-visible extern crate namespace and macro bindings",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:5ac9ca886a02b59fbc0fd1514e779e42402c4d427c0cec0030e56cf895cd1173",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T04:49:15.676457+00:00",
+      "reason": "Add red regressions for split-file inherent method identity, hyphenated implicit binary roots, and inner conditional module uncertainty",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:828565c382f2aef4185c9ac3566d9816959aaaa611b17885ea6fec3f3b66822b",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T04:50:56.252521+00:00",
+      "reason": "Specify crate-qualified cross-file impl owners to distinguish them from file-local types",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:69912e84d410f3e1f4e8e6d33eef4e1a7ae205e19e01ac52e2f4f48734262f9f",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T04:55:54.561583+00:00",
+      "reason": "Sort local imports without changing behavioral assertions",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:69912e84d410f3e1f4e8e6d33eef4e1a7ae205e19e01ac52e2f4f48734262f9f",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T05:01:26.183244+00:00",
+      "reason": "Capture red Rust raw-string and Unicode escape path resolution tests",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:c56b4c778e504b8a26230541754c14e0ab75e6ebce584ec9d965610fa64e571e",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T05:13:01.055323+00:00",
+      "reason": "Capture red shared workspace Cargo source identity and foreign-crate rejection regression",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:df0421efcbe368b55a367e819b31875a9a37fd5c46c5c5f92eccbe1dcf81a9ab",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T05:21:21.334997+00:00",
+      "reason": "Capture reviewed Rust plugin Outcome and package validation evidence",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    }
+  ],
+  "red_evidence": {
+    "red": true,
+    "captured_at": "2026-10-02T05:13:01.523448+00:00",
+    "commands": [
+      {
+        "command": "uv run --no-sync python -m pytest tests/ -q",
+        "exit_code": 1,
+        "output_tail": "            '[package]\\nname=\"demo\"\\nversion=\"0.1.0\"\\nedition=\"2021\"\\n[lib]\\npath=\"../shared/lib.rs\"\\n[dependencies]\\nother={path=\"../other\"}\\n'\n        )\n        (tmp_path / \"other/Cargo.toml\").write_text(\n            '[package]\\nname=\"other\"\\nversion=\"0.1.0\"\\nedition=\"2021\"\\n'\n        )\n        (tmp_path / \"other/src/lib.rs\").write_text(\"pub fn render() -> u32 { 1 }\")\n        (tmp_path / \"shared/lib.rs\").write_text(\"pub fn render() -> u32 { 1 } mod math;\")\n        (tmp_path / \"shared/math.rs\").write_text(\"pub fn add() {}\")\n        test = tmp_path / \"demo/tests/api.rs\"\n        test.write_text(\"#[test] fn checks() { assert_eq!(other::render(), 1); }\")\n        validator = _rust_validator()\n>       assert validator.module_path(\"shared/lib.rs\", tmp_path) == \"demo\"\nE       AssertionError: assert None == 'demo'\nE        +  where None = module_path('shared/lib.rs', PosixPath('/tmp/pytest-of-atomrem/pytest-2516/test_workspace_library_outside0'))\nE        +    where module_path = <maid_validator_rust.validator.RustValidator object at 0x70069dca45a0>.module_path\n\ntests/test_validator.py:1162: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_validator.py::test_workspace_library_outside_package_preserves_identity_and_rejects_other_crate\n1 failed, 145 passed in 0.30s",
+        "classification": "red"
+      }
+    ]
+  },
+  "legacy_baseline": null,
+  "agent": null,
+  "_manifest_contract": {
+    "artifacts": [
+      "src/maid_validator_rust/__init__.py:class:RustValidator",
+      "src/maid_validator_rust/__init__.py:class:RustValidator:kind=class",
+      "src/maid_validator_rust/validator.py:class:RustValidator",
+      "src/maid_validator_rust/validator.py:class:RustValidator:base=BaseValidator",
+      "src/maid_validator_rust/validator.py:class:RustValidator:kind=class",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_behavioral_artifacts",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_behavioral_artifacts:arg=file_path:type=str | Path:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_behavioral_artifacts:arg=source:type=str:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_behavioral_artifacts:kind=method",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_behavioral_artifacts:of=RustValidator",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_behavioral_artifacts:returns=CollectionResult",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_dependencies",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_dependencies:arg=file_path:type=str | Path:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_dependencies:arg=project_root:type=Path:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_dependencies:arg=source:type=str:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_dependencies:kind=method",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_dependencies:of=RustValidator",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_dependencies:returns=DependencyCollectionResult",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_implementation_artifacts",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_implementation_artifacts:arg=file_path:type=str | Path:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_implementation_artifacts:arg=source:type=str:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_implementation_artifacts:kind=method",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_implementation_artifacts:of=RustValidator",
+      "src/maid_validator_rust/validator.py:method:RustValidator.collect_implementation_artifacts:returns=CollectionResult",
+      "src/maid_validator_rust/validator.py:method:RustValidator.get_test_function_bodies",
+      "src/maid_validator_rust/validator.py:method:RustValidator.get_test_function_bodies:arg=file_path:type=str | Path:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.get_test_function_bodies:arg=source:type=str:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.get_test_function_bodies:kind=method",
+      "src/maid_validator_rust/validator.py:method:RustValidator.get_test_function_bodies:of=RustValidator",
+      "src/maid_validator_rust/validator.py:method:RustValidator.get_test_function_bodies:returns=dict[str, str]",
+      "src/maid_validator_rust/validator.py:method:RustValidator.module_path",
+      "src/maid_validator_rust/validator.py:method:RustValidator.module_path:arg=file_path:type=str | Path:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.module_path:arg=project_root:type=Path:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.module_path:kind=method",
+      "src/maid_validator_rust/validator.py:method:RustValidator.module_path:of=RustValidator",
+      "src/maid_validator_rust/validator.py:method:RustValidator.module_path:returns=str | None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.supported_extensions",
+      "src/maid_validator_rust/validator.py:method:RustValidator.supported_extensions:kind=method",
+      "src/maid_validator_rust/validator.py:method:RustValidator.supported_extensions:of=RustValidator",
+      "src/maid_validator_rust/validator.py:method:RustValidator.supported_extensions:returns=tuple[str, Ellipsis]",
+      "src/maid_validator_rust/validator.py:method:RustValidator.types_match",
+      "src/maid_validator_rust/validator.py:method:RustValidator.types_match:arg=implementation_type:type=str | None:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.types_match:arg=manifest_type:type=str | None:default=None",
+      "src/maid_validator_rust/validator.py:method:RustValidator.types_match:kind=method",
+      "src/maid_validator_rust/validator.py:method:RustValidator.types_match:of=RustValidator",
+      "src/maid_validator_rust/validator.py:method:RustValidator.types_match:returns=bool"
+    ],
+    "files": {
+      "create": [
+        "src/maid_validator_rust/__init__.py",
+        "src/maid_validator_rust/validator.py"
+      ],
+      "edit": [],
+      "read": [
+        "tests/test_conformance.py",
+        "tests/test_validator.py"
+      ],
+      "scope": [
+        ".gitignore",
+        "AGENTS.md",
+        "CHANGELOG.md",
+        "LICENSE",
+        "README.md",
+        "pyproject.toml",
+        "src/maid_validator_rust/_behavioral.py",
+        "src/maid_validator_rust/_dependencies.py",
+        "src/maid_validator_rust/_implementation.py",
+        "src/maid_validator_rust/_modules.py",
+        "src/maid_validator_rust/_parse.py",
+        "uv.lock"
+      ],
+      "delete": [],
+      "snapshot": []
+    },
+    "file_contract": {
+      "create": [
+        {
+          "path": "src/maid_validator_rust/__init__.py",
+          "artifacts": [
+            {
+              "kind": "class",
+              "name": "RustValidator"
+            }
+          ]
+        },
+        {
+          "path": "src/maid_validator_rust/validator.py",
+          "artifacts": [
+            {
+              "kind": "class",
+              "name": "RustValidator",
+              "bases": [
+                "BaseValidator"
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "supported_extensions",
+              "of": "RustValidator",
+              "returns": "tuple[str, Ellipsis]"
+            },
+            {
+              "kind": "method",
+              "name": "collect_implementation_artifacts",
+              "of": "RustValidator",
+              "args": [
+                {
+                  "name": "source",
+                  "type": "str"
+                },
+                {
+                  "name": "file_path",
+                  "type": "str | Path"
+                }
+              ],
+              "returns": "CollectionResult"
+            },
+            {
+              "kind": "method",
+              "name": "collect_behavioral_artifacts",
+              "of": "RustValidator",
+              "args": [
+                {
+                  "name": "source",
+                  "type": "str"
+                },
+                {
+                  "name": "file_path",
+                  "type": "str | Path"
+                }
+              ],
+              "returns": "CollectionResult"
+            },
+            {
+              "kind": "method",
+              "name": "types_match",
+              "of": "RustValidator",
+              "args": [
+                {
+                  "name": "manifest_type",
+                  "type": "str | None"
+                },
+                {
+                  "name": "implementation_type",
+                  "type": "str | None"
+                }
+              ],
+              "returns": "bool"
+            },
+            {
+              "kind": "method",
+              "name": "get_test_function_bodies",
+              "of": "RustValidator",
+              "args": [
+                {
+                  "name": "source",
+                  "type": "str"
+                },
+                {
+                  "name": "file_path",
+                  "type": "str | Path"
+                }
+              ],
+              "returns": "dict[str, str]"
+            },
+            {
+              "kind": "method",
+              "name": "collect_dependencies",
+              "of": "RustValidator",
+              "args": [
+                {
+                  "name": "source",
+                  "type": "str"
+                },
+                {
+                  "name": "file_path",
+                  "type": "str | Path"
+                },
+                {
+                  "name": "project_root",
+                  "type": "Path"
+                }
+              ],
+              "returns": "DependencyCollectionResult"
+            },
+            {
+              "kind": "method",
+              "name": "module_path",
+              "of": "RustValidator",
+              "args": [
+                {
+                  "name": "file_path",
+                  "type": "str | Path"
+                },
+                {
+                  "name": "project_root",
+                  "type": "Path"
+                }
+              ],
+              "returns": "str | None"
+            }
+          ]
+        }
+      ],
+      "read": [
+        "tests/test_validator.py",
+        "tests/test_conformance.py"
+      ],
+      "scope": [
+        {
+          "path": "src/maid_validator_rust/_parse.py",
+          "reason": "Private tree-sitter parsing and attribute/test traversal."
+        },
+        {
+          "path": "src/maid_validator_rust/_implementation.py",
+          "reason": "Private Rust declaration collection."
+        },
+        {
+          "path": "src/maid_validator_rust/_behavioral.py",
+          "reason": "Private bounded test references and lexical bindings."
+        },
+        {
+          "path": "src/maid_validator_rust/_dependencies.py",
+          "reason": "Private module path resolution with explicit uncertainty."
+        },
+        {
+          "path": "pyproject.toml",
+          "reason": "Distribution, entry point, runtime and dev dependencies."
+        },
+        {
+          "path": "uv.lock",
+          "reason": "Reproducible dependency graph."
+        },
+        {
+          "path": ".gitignore",
+          "reason": "Ignore builds and advisory state."
+        },
+        {
+          "path": "README.md",
+          "reason": "Installation, usage, mappings and supported boundaries."
+        },
+        {
+          "path": "LICENSE",
+          "reason": "MIT license."
+        },
+        {
+          "path": "CHANGELOG.md",
+          "reason": "Initial unpublished version notes."
+        },
+        {
+          "path": "AGENTS.md",
+          "reason": "Local MAID and uv development instructions."
+        },
+        {
+          "path": "src/maid_validator_rust/_modules.py",
+          "reason": "Private Cargo package root and Rust source module identity mapping."
+        }
+      ]
+    },
+    "test_files": [
+      "tests/test_conformance.py",
+      "tests/test_validator.py"
+    ],
+    "validate_commands": [
+      "uv run --no-sync python -m pytest tests/ -q"
+    ],
+    "acceptance_commands": []
+  }
+}

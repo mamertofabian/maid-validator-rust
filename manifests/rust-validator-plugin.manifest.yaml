@@ -1,0 +1,243 @@
+# manifest-kind: implementation
+# MAID manifest - a machine-checked contract for one change.
+# Declares the intent, the files it may touch, and the commands that verify it.
+# Nothing here is needed to build or run this project; safe to ignore.
+# What it is: https://github.com/mamertofabian/maid-runner
+schema: '2'
+type: feature
+created: '2026-10-02T00:35:26Z'
+goal: Provide an independently installable Rust validator plugin for MAID Runner.
+description: 'Build maid-validator-rust 0.1.0 as a sibling src-layout Python package
+  registered for .rs. Parse offline with tree-sitter-rust, fail collection loudly
+  on recovered invalid syntax, and require no compiler for behavioral collection.
+  Map public structs to class, traits to interface, enums to enum, aliases to type,
+  pub fields to attribute, free functions to function and inherent/trait implementation
+  functions to method. Preserve raw types, generics and async state, omit self from
+  args, use () for no return, qualify inline module names, hide restricted/private
+  API except underscore private artifacts required by conformance. Const/static items,
+  macro-generated API and compiler-dependent binding are outside the initial artifact
+  model. Collect references only from standard #[test] bodies and supported assert!/assert_eq!/assert_ne!
+  expression arguments, resolving source-visible imports/aliases, same-file declarations,
+  super/self paths, constructors, struct literals and explicit typed lexical receivers.
+  Respect shadowing and exclude uninvoked helpers/closures and arbitrary macro expansions;
+  unknown bindings yield no guessed owner and no exact overload signatures. Treat
+  public trait impl methods as their type owner (ambiguous trait bindings remain compiler-dependent).
+  Implement type comparison by removing insignificant whitespace only, preserving
+  lifetimes, mutability and qualified names. Expose parsed test bodies for Runner
+  inline discovery and source-local mod dependency file paths for Cargo target module
+  traversal; missing/ambiguous paths or cfg other than cfg(test) are explicitly unresolved.
+  Respect nested inline modules and #[path] files, remain within project root. Package
+  metadata, initial documentation, MIT license, uv lock, conformance and real entry-point
+  discovery. No commit, push, publication or remote creation.
+
+  Exclude ignored and unresolved conditional test bodies; preserve local module/import
+  identity and lexical type shadowing; support typed self omission and arbitrary Cargo
+  target roots. Add module_path and import_source for project-local library module
+  graphs and foreign crate identity. Emit reference_context=exact to request Runner
+  kind/owner matching. Constructor types still require syntactic evidence.
+
+
+  Source references do not claim arbitrary control-flow reachability or per-function
+  runtime execution. Keep this boundary narrow: no AST execution interpreter or branch-condition
+  evaluator; Cargo target coverage establishes selected source targets. Eager assertion
+  operands, lexical bindings and configuration syntax are bounded collection rules.
+
+  '
+temptations:
+- risk: Guess receiver types from variable names or argument count.
+  instead: Resolve explicit nearest lexical bindings and keep unknown references unsigned
+    and unowned.
+- risk: Use regex as a Rust parser or accept tree-sitter recovery as valid syntax.
+  instead: Use the established grammar and return errors with zero artifacts for malformed
+    sources.
+- risk: Count imports, comments, dead helpers, closures or arbitrary macros as calls.
+  instead: Restrict collection to parsed test bodies and bounded assertion expression
+    macros; test negative identities.
+- risk: Normalize away lifetimes, reference mutability or qualified names.
+  instead: Remove whitespace only and exercise type comparison negative cases.
+files:
+  create:
+  - path: src/maid_validator_rust/__init__.py
+    artifacts:
+    - kind: class
+      name: RustValidator
+  - path: src/maid_validator_rust/validator.py
+    artifacts:
+    - kind: class
+      name: RustValidator
+      bases:
+      - BaseValidator
+    - kind: method
+      name: supported_extensions
+      args: []
+      returns: tuple[str, Ellipsis]
+      of: RustValidator
+    - kind: method
+      name: collect_implementation_artifacts
+      args:
+      - name: source
+        type: str
+      - name: file_path
+        type: str | Path
+      returns: CollectionResult
+      of: RustValidator
+    - kind: method
+      name: collect_behavioral_artifacts
+      args:
+      - name: source
+        type: str
+      - name: file_path
+        type: str | Path
+      returns: CollectionResult
+      of: RustValidator
+    - kind: method
+      name: types_match
+      args:
+      - name: manifest_type
+        type: str | None
+      - name: implementation_type
+        type: str | None
+      returns: bool
+      of: RustValidator
+    - kind: method
+      name: get_test_function_bodies
+      args:
+      - name: source
+        type: str
+      - name: file_path
+        type: str | Path
+      returns: dict[str, str]
+      of: RustValidator
+    - kind: method
+      name: collect_dependencies
+      args:
+      - name: source
+        type: str
+      - name: file_path
+        type: str | Path
+      - name: project_root
+        type: Path
+      returns: DependencyCollectionResult
+      of: RustValidator
+    - kind: method
+      name: module_path
+      of: RustValidator
+      args:
+      - name: file_path
+        type: str | Path
+      - name: project_root
+        type: Path
+      returns: str | None
+  scope:
+  - path: src/maid_validator_rust/_parse.py
+    reason: Private tree-sitter parsing and attribute/test traversal.
+  - path: src/maid_validator_rust/_implementation.py
+    reason: Private Rust declaration collection.
+  - path: src/maid_validator_rust/_behavioral.py
+    reason: Private bounded test references and lexical bindings.
+  - path: src/maid_validator_rust/_dependencies.py
+    reason: Private module path resolution with explicit uncertainty.
+  - path: pyproject.toml
+    reason: Distribution, entry point, runtime and dev dependencies.
+  - path: uv.lock
+    reason: Reproducible dependency graph.
+  - path: .gitignore
+    reason: Ignore builds and advisory state.
+  - path: README.md
+    reason: Installation, usage, mappings and supported boundaries.
+  - path: LICENSE
+    reason: MIT license.
+  - path: CHANGELOG.md
+    reason: Initial unpublished version notes.
+  - path: AGENTS.md
+    reason: Local MAID and uv development instructions.
+  - path: src/maid_validator_rust/_modules.py
+    reason: Private Cargo package root and Rust source module identity mapping.
+  read:
+  - tests/test_validator.py
+  - tests/test_conformance.py
+validate:
+- - uv
+  - run
+  - --no-sync
+  - python
+  - -m
+  - pytest
+  - tests/
+  - -q
+outcome:
+  status: completed
+  summary: Created unpublished maid-validator-rust 0.1.0 with tree-sitter Rust declarations, bounded behavioral
+    references, Cargo module identities and dependency hooks.
+  rationale: Use an existing Rust grammar and source-visible evidence without compiler binding or arbitrary
+    control-flow interpretation. Keep unsupported forms explicit in README.
+  completed_at: '2026-10-02T05:21:16.000008+00:00'
+  lessons:
+  - lesson_type: validation
+    summary: Rust module evidence must handle inner cfg attributes, Rust string literals, configured workspace
+      target roots and crate-qualified cross-file impl owners; foreign same-named calls must fail the
+      contract.
+    tags:
+    - rust
+    - parser
+    - module-identity
+    paths:
+    - src/maid_validator_rust/_dependencies.py
+    - src/maid_validator_rust/_modules.py
+    - src/maid_validator_rust/_implementation.py
+    - tests/test_validator.py
+  review_notes:
+  - source: independent-read-only-rust_review_workspace_contract
+    severity: info
+    summary: Ready to merge with no blocking or advisory findings; reviewer independently ran 146 plugin
+      tests and 64 Runner Rust/Cargo tests.
+  validation:
+  - command:
+    - uv
+    - run
+    - --no-sync
+    - python
+    - -m
+    - pytest
+    - tests/
+    - -q
+    status: passed
+    summary: 146 tests passed, including public conformance, entry-point discovery and adversarial identities.
+  - command:
+    - uv
+    - run
+    - --no-sync
+    - maid
+    - verify
+    - --profile
+    - handoff
+    - --no-changed-scope
+    - --test-scope
+    - repository
+    - --packet
+    status: passed
+    summary: All 8 stages passed. Changed-scope comparison is disabled because this new local repository
+      has no Git HEAD.
+  - command:
+    - uv
+    - build
+    status: passed
+    summary: Wheel and source distribution built successfully.
+  - command:
+    - /tmp/maid-rust-wheel-env/bin/python
+    - -m
+    - pytest
+    - -o
+    - pythonpath=
+    - tests
+    - -q
+    status: passed
+    summary: Built-wheel suite passed all 146 tests on Python 3.10.16 with the updated local Runner installed.
+  - command:
+    - cargo
+    - test
+    - --offline
+    status: passed
+    summary: Temporary real Cargo projects passed inline/integration tests and split-file inherent implementations;
+      both MAID modes passed, including raw-string path overrides, and a still-present method removal
+      was rejected with E311.
