@@ -2,7 +2,7 @@
 
 Rust validator plugin for MAID Runner, using tree-sitter-rust for offline source collection.
 
-This repository contains the initial, unpublished 0.1.0 implementation. Parsing
+Version 0.1.0 is published on PyPI and GitHub. Parsing
 does not invoke Cargo, compile code, access the network, or expand macros.
 
 ## Development and installation
@@ -30,10 +30,12 @@ release tests run. Those integration assertions run automatically on 2.27.7+.
 To exercise them now against the sibling checkout, use a separate environment
 with `../maid-runner` installed, so the release lock stays index-only.
 
-Version **0.1.0 is unpublished** until the release is verified. See
-[RELEASING.md](RELEASING.md) and [CHANGELOG.md](CHANGELOG.md).
+Version 0.1.0 is **published on PyPI and GitHub**:
+[PyPI](https://pypi.org/project/maid-validator-rust/0.1.0/) ·
+[GitHub release](https://github.com/mamertofabian/maid-validator-rust/releases/tag/v0.1.0).
+See [RELEASING.md](RELEASING.md) and [CHANGELOG.md](CHANGELOG.md).
 
-After publication, install `maid-validator-rust` from PyPI. Its
+Install `maid-validator-rust` from PyPI. Its
 `maid_runner.validators` entry point discovers `RustValidator` for `.rs`.
 Cargo is required for the full Runner integration and executable Rust tests.
 

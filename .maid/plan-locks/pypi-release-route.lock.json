@@ -2,10 +2,10 @@
   "manifest_path": "manifests/pypi-release-route.manifest.yaml",
   "manifest_hash": "sha256-contract:0d6108165448979051d5a9587420ffde187853b7acc9879824e39b892e21d684",
   "test_hashes": {
-    "tests/test_release_readiness.py": "sha256-pyast:v2:55233d4630bf374d031ae00087606e04ceb444b6e733942897175f716d49d41e"
+    "tests/test_release_readiness.py": "sha256-pyast:v2:73548779de07f2c6ebf01c61a52cf02693419270af81037f50cd9bfb6902f12d"
   },
   "created_at": "2026-10-02T05:44:17.887765+00:00",
-  "revision": 10,
+  "revision": 11,
   "revisions": [
     {
       "prior_manifest_hash": "sha256-contract:acacff7a69a1fbadeef8da15fbb850f7e8f11dd0def419a3a89447a002d211aa",
@@ -156,6 +156,23 @@
       },
       "revised_at": "2026-10-02T07:10:39.154229+00:00",
       "reason": "Date the authorized first release while keeping publication status pending until verification",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:0d6108165448979051d5a9587420ffde187853b7acc9879824e39b892e21d684",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:55233d4630bf374d031ae00087606e04ceb444b6e733942897175f716d49d41e"
+      },
+      "revised_at": "2026-10-02T07:56:55.741925+00:00",
+      "reason": "Refresh shared operator-status assertion after verified publication",
       "agent": null,
       "contract_delta": {
         "artifacts_added": [],

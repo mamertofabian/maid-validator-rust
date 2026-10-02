@@ -4,10 +4,10 @@
   "test_hashes": {
     "tests/test_validator.py": "sha256-pyast:v2:b3489948f5d9389c0d040220cf6b282b3dae52362df710ce6aec5682aecb627c",
     "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479",
-    "tests/test_release_readiness.py": "sha256-pyast:v2:55233d4630bf374d031ae00087606e04ceb444b6e733942897175f716d49d41e"
+    "tests/test_release_readiness.py": "sha256-pyast:v2:73548779de07f2c6ebf01c61a52cf02693419270af81037f50cd9bfb6902f12d"
   },
   "created_at": "2026-10-02T00:35:25.810534+00:00",
-  "revision": 32,
+  "revision": 33,
   "revisions": [
     {
       "prior_manifest_hash": "sha256-contract:5e060c16c03543a6981961e9259d5e553dabc04066caa16d4dd6dd95dcc98257",
@@ -568,6 +568,25 @@
       },
       "revised_at": "2026-10-02T07:13:17.220101+00:00",
       "reason": "Refresh the shared test-directory fingerprint after release-date metadata changed; collector assertions and command are unchanged",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:b3489948f5d9389c0d040220cf6b282b3dae52362df710ce6aec5682aecb627c",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479",
+        "tests/test_release_readiness.py": "sha256-pyast:v2:55233d4630bf374d031ae00087606e04ceb444b6e733942897175f716d49d41e"
+      },
+      "revised_at": "2026-10-02T07:56:55.539310+00:00",
+      "reason": "Refresh shared test-directory hashes for reviewed publication-status assertion; collector contract remains unchanged",
       "agent": null,
       "contract_delta": {
         "artifacts_added": [],

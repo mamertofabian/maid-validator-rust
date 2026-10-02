@@ -3,8 +3,16 @@
 This prepared release route follows `maid-validator-csharp` and
 `maid-validator-solidity`: Python 3.10-3.14 CI, SHA-pinned actions, pinned build
 and metadata tools, isolated wheel discovery, PyPI Trusted Publisher OIDC and
-GitHub release assets. Version 0.1.0 is unpublished. Local preparation creates
-neither the remote repository nor the external publisher binding.
+GitHub release assets. Version 0.1.0 is published on PyPI and GitHub.
+
+- [PyPI 0.1.0](https://pypi.org/project/maid-validator-rust/0.1.0/)
+- [GitHub v0.1.0](https://github.com/mamertofabian/maid-validator-rust/releases/tag/v0.1.0)
+- [Successful release workflow](https://github.com/mamertofabian/maid-validator-rust/actions/runs/36978894187)
+
+The repository, tag-only `pypi` environment and Trusted Publisher are configured.
+Clean Python 3.10 public-index installation discovers active RustValidator with
+Runner 2.27.6. PyPI and GitHub wheel/sdist SHA-256 hashes match. The one-time setup
+below documents that configuration for future reference.
 
 ## One-time setup
 
@@ -45,7 +53,7 @@ automatically. Do not describe a 2.27.6 installation as full Cargo validation.
 ## Release checklist
 
 1. Complete the external setup above. Start from clean,
-   synchronized `main`; confirm the version and tag are absent on PyPI and GitHub.
+   synchronized `main`; confirm the new version and tag are absent on PyPI and GitHub. Start with an unpublished version.
 2. Check `project.version`, date the matching CHANGELOG.md entry, and retain
    unpublished status until actual publication succeeds.
 3. Run the index-only gates:

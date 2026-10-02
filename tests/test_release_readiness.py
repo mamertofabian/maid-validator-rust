@@ -263,7 +263,7 @@ def test_publish_main_guard_executes_and_rejects_unmerged_commits(tmp_path, on_m
     assert (result.returncode == 0) is on_main
 
 
-def test_release_documentation_names_pending_setup_and_runner_prerequisite():
+def test_release_documentation_names_publisher_setup_and_runner_prerequisite():
     releasing = (ROOT / "RELEASING.md").read_text()
     for label, value in [
         ("PyPI project name", "maid-validator-rust"),
@@ -286,6 +286,6 @@ def test_release_documentation_names_pending_setup_and_runner_prerequisite():
         assert detail in releasing
     readme = (ROOT / "README.md").read_text()
     assert "RELEASING.md" in readme and "CHANGELOG.md" in readme
-    assert "0.1.0" in readme and "unpublished" in readme
+    assert "0.1.0" in readme and "published on PyPI and GitHub" in readme
     assert "collection" in readme and "2.27.7" in readme
     assert "## 0.1.0 — 2026-10-02" in (ROOT / "CHANGELOG.md").read_text()

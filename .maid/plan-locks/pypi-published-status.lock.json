@@ -1,0 +1,97 @@
+{
+  "manifest_path": "manifests/pypi-published-status.manifest.yaml",
+  "manifest_hash": "sha256-contract:36e0ac98c586ef217004dc353c871e4bb70c56e5fed6247ba25c6eea851a0ea1",
+  "test_hashes": {
+    "tests/test_release_readiness.py": "sha256-pyast:v2:73548779de07f2c6ebf01c61a52cf02693419270af81037f50cd9bfb6902f12d"
+  },
+  "created_at": "2026-10-02T07:59:25.864117+00:00",
+  "revision": 3,
+  "revisions": [
+    {
+      "prior_manifest_hash": "sha256-contract:4ddd47412aec9ef2411fe68389312e29a3eb969ce859b6bae1f4f12306c05b13",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:73548779de07f2c6ebf01c61a52cf02693419270af81037f50cd9bfb6902f12d"
+      },
+      "revised_at": "2026-10-02T07:59:26.393108+00:00",
+      "reason": "Migrated by maid manifest promote: manifests/drafts/pypi-published-status.manifest.yaml -> manifests/pypi-published-status.manifest.yaml",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:36e0ac98c586ef217004dc353c871e4bb70c56e5fed6247ba25c6eea851a0ea1",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:73548779de07f2c6ebf01c61a52cf02693419270af81037f50cd9bfb6902f12d"
+      },
+      "revised_at": "2026-10-02T08:15:32.962696+00:00",
+      "reason": "Capture verified publication and reviewed documentation Outcome",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    }
+  ],
+  "red_evidence": {
+    "red": true,
+    "captured_at": "2026-10-02T07:59:26.187629+00:00",
+    "commands": [
+      {
+        "command": "uv run python -m pytest tests/test_release_readiness.py -q",
+        "exit_code": 1,
+        "output_tail": "        for detail in (\n            \"PyPI Trusted Publisher\",\n            \"2.27.7\",\n            \"[tool.uv.sources]\",\n            \"uv lock\",\n            \"uv sync --locked\",\n            \"twine check\",\n            \"unpublished\",\n            \"2.27.6\",\n        ):\n            assert detail in releasing\n        readme = (ROOT / \"README.md\").read_text()\n        assert \"RELEASING.md\" in readme and \"CHANGELOG.md\" in readme\n>       assert \"0.1.0\" in readme and \"published on PyPI and GitHub\" in readme\nE       AssertionError: assert ('0.1.0' in '# MAID Rust Validator\\n\\nRust validator plugin for MAID Runner, using tree-sitter-rust for offline source collection....artifacts. The test suite runs\\nthe public Runner conformance kit, entry-point discovery and adversarial identities.\\n' and 'published on PyPI and GitHub' in '# MAID Rust Validator\\n\\nRust validator plugin for MAID Runner, using tree-sitter-rust for offline source collection....artifacts. The test suite runs\\nthe public Runner conformance kit, entry-point discovery and adversarial identities.\\n')\n\ntests/test_release_readiness.py:289: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_release_readiness.py::test_release_documentation_names_publisher_setup_and_runner_prerequisite\n1 failed, 10 passed in 0.16s",
+        "classification": "red"
+      }
+    ]
+  },
+  "legacy_baseline": null,
+  "agent": null,
+  "_manifest_contract": {
+    "artifacts": [],
+    "files": {
+      "create": [],
+      "edit": [],
+      "read": [
+        "tests/test_release_readiness.py"
+      ],
+      "scope": [
+        "README.md",
+        "RELEASING.md"
+      ],
+      "delete": [],
+      "snapshot": []
+    },
+    "file_contract": {
+      "read": [
+        "tests/test_release_readiness.py"
+      ],
+      "scope": [
+        {
+          "path": "README.md",
+          "reason": "Accurate published status and public release links."
+        },
+        {
+          "path": "RELEASING.md",
+          "reason": "Verified release evidence and configured publisher state."
+        }
+      ]
+    },
+    "test_files": [
+      "tests/test_release_readiness.py"
+    ],
+    "validate_commands": [
+      "uv run python -m pytest tests/test_release_readiness.py -q"
+    ],
+    "acceptance_commands": []
+  }
+}

@@ -1,0 +1,93 @@
+# draft-kind: implementation
+# MAID manifest - a machine-checked contract for one change.
+# Declares the intent, the files it may touch, and the commands that verify it.
+# Nothing here is needed to build or run this project; safe to ignore.
+# What it is: https://github.com/mamertofabian/maid-runner
+schema: '2'
+type: fix
+created: '2026-10-02T07:59:26Z'
+goal: Record verified Rust validator 0.1.0 publication without changing the released artifacts.
+description: 'PyPI 0.1.0, GitHub v0.1.0 and workflow 36978894187 are verified. Both
+
+  distribution hashes match and clean public-index Python 3.10 installation
+
+  discovers active RustValidator with published Runner 2.27.6. Update operator
+
+  docs to published status, preserve the 2.27.7 full-integration boundary and
+
+  adapt the existing release-documentation status assertion. No collector,
+
+  package version, dependency or tag changes. The released artifacts remain
+
+  immutable; these records describe their verified external state.
+
+  '
+files:
+  scope:
+  - path: README.md
+    reason: Accurate published status and public release links.
+  - path: RELEASING.md
+    reason: Verified release evidence and configured publisher state.
+  read:
+  - tests/test_release_readiness.py
+validate:
+- - uv
+  - run
+  - python
+  - -m
+  - pytest
+  - tests/test_release_readiness.py
+  - -q
+outcome:
+  status: completed
+  summary: Recorded verified maid-validator-rust 0.1.0 publication on PyPI and GitHub; released artifacts
+    and Runner compatibility remain unchanged.
+  completed_at: '2026-10-02T08:15:32.787965+00:00'
+  review_notes:
+  - source: independent-read-only-rust_published_status_review
+    severity: info
+    summary: 'Ready to merge; no blockers. Non-actionable advisory: future-release checklist retains the
+      historical v0.1.0 tag example.'
+  validation:
+  - command:
+    - uv
+    - run
+    - python
+    - -m
+    - pytest
+    - tests
+    - -q
+    status: passed
+    summary: 153 passed with four explicit future Runner integration skips; focused publication/operator
+      tests pass 11/11.
+  - command:
+    - uv
+    - run
+    - maid
+    - verify
+    - --profile
+    - handoff
+    - --manifest-dir
+    - manifests
+    - --test-scope
+    - task
+    - --require-plan-lock
+    - --require-red-evidence
+    - --since
+    - 8ac25f6
+    status: passed
+    summary: All nine handoff stages pass after shared-lock reconciliation.
+  - command:
+    - /tmp/maid-rust-public-release-smoke/bin/maid
+    - validators
+    - --json
+    status: passed
+    summary: Clean public-index Python 3.10 installation resolves Runner 2.27.6, discovers active RustValidator
+      0.1.0 for .rs, and collects render() successfully.
+  - command:
+    - gh
+    - api
+    - repos/mamertofabian/maid-validator-rust/releases/tags/v0.1.0
+    status: passed
+    summary: 'Release workflow 36978894187 succeeded. PyPI/GitHub SHA256 match: wheel c7b5202066549372b22318118db9e9d9fd6f066c8ecaaa23c2ad293b09cb450e;
+      sdist a4e0f3575398f4df1964bc151d00dac305c3d310299aa0b7672bf7dd2d8e2da0.'
