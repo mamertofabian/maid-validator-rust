@@ -7,16 +7,35 @@ requires-python = ">=3.10"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{name = "Mamerto Fabian Jr.", email = "mamerto@codefrost.com"}]
+keywords = ["maid", "maid-runner", "rust", "validator", "tree-sitter", "plugin"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Quality Assurance",
+]
 dependencies = ["maid-runner>=2.27.6,<3", "tree-sitter>=0.25,<0.26", "tree-sitter-rust>=0.24,<0.25", "tomli>=2; python_version < '3.11'"]
+
+[project.urls]
+Homepage = "https://github.com/mamertofabian/maid-validator-rust"
+Repository = "https://github.com/mamertofabian/maid-validator-rust"
+Issues = "https://github.com/mamertofabian/maid-validator-rust/issues"
+Changelog = "https://github.com/mamertofabian/maid-validator-rust/blob/main/CHANGELOG.md"
 
 [project.entry-points."maid_runner.validators"]
 rust = "maid_validator_rust:RustValidator"
 
 [dependency-groups]
-dev = ["pytest>=8.4,<10", "black>=25", "ruff>=0.13"]
+dev = ["pytest>=8.4,<10", "black>=25", "ruff>=0.13", "maid-runner[quality]>=2.27.6,<3", "pytest-xdist>=3.8"]
 
 [build-system]
-requires = ["setuptools>=77", "wheel"]
+requires = ["setuptools==83.0.0", "wheel==0.47.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
@@ -26,6 +45,9 @@ include = ["maid_validator_rust*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.black]
+target-version = ["py310"]
 
 [tool.ruff]
 target-version = "py310"

@@ -8,3 +8,6 @@ __pycache__/
 dist/
 build/
 target/
+.release-smoke/
+.coverage
+.coverage.*

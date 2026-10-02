@@ -1,0 +1,150 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: Test Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          enable-cache: false
+          python-version: ${{ matrix.python-version }}
+      - name: Reject development-only Runner source
+        run: |
+          if grep -Fq "[tool.uv.sources]" pyproject.toml; then
+            echo "::error::Remove [tool.uv.sources], raise the maid-runner lower bound, and relock from indexes before tagging."
+            exit 1
+          fi
+      - name: Check Cargo availability
+        run: cargo --version
+      - name: Install locked dependencies
+        run: uv sync --locked
+      - name: Run release gates
+        run: |
+          uv run pytest -q
+          uv run ruff check src/ tests/
+          uv run black --check src/ tests/
+          uv run maid validate
+          uv run maid test
+
+  build:
+    name: Build distributions
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          enable-cache: false
+          python-version: "3.14"
+      - name: Verify tagged commit is on main
+        run: |
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+      - name: Verify tag matches project.version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import os
+          try:
+              import tomllib
+          except ModuleNotFoundError:
+              import tomli as tomllib
+          from pathlib import Path
+
+          project_version = tomllib.loads(Path("pyproject.toml").read_text())["project"]["version"]
+          tag_version = os.environ["RELEASE_TAG"].removeprefix("v")
+          if tag_version != project_version:
+              raise SystemExit(
+                  f"Tag version {tag_version!r} does not match project.version {project_version!r}"
+              )
+          PY
+      - name: Build wheel and source distribution
+        run: uv build
+      - name: Check distribution metadata
+        run: uvx --from twine==7.0.0 twine check dist/*
+      - name: Verify installed wheel and validator discovery
+        run: |
+          uv venv --python 3.14 .release-smoke
+          uv pip install --python .release-smoke/bin/python dist/*.whl
+          .release-smoke/bin/maid validators --json > .release-smoke/validators.json
+          .release-smoke/bin/python - <<'PY'
+          import json
+          from pathlib import Path
+
+          rows = json.loads(Path(".release-smoke/validators.json").read_text())["validators"]
+          row = next(item for item in rows if item["source"].startswith("maid-validator-rust "))
+          assert row["name"] == "RustValidator"
+          assert row["extensions"] == [".rs"]
+          assert row["status"] == "active"
+          PY
+      - name: Store distributions
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
+
+  publish:
+    name: Publish distributions to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/maid-validator-rust
+    permissions:
+      id-token: write # Required only for the short-lived PyPI Trusted Publisher OIDC token.
+
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish distributions
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
+
+  github-release:
+    name: Create GitHub Release
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to create the release and attach the verified distributions.
+
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Create release and attach distributions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_REPOSITORY: ${{ github.repository }}
+        run: gh release create "$RELEASE_TAG" dist/* --verify-tag --generate-notes --repo "$RELEASE_REPOSITORY"

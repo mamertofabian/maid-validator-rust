@@ -1,7 +1,14 @@
+from importlib.metadata import version
 from pathlib import Path
 
 import pytest
 from maid_runner.validators.registry import ValidatorRegistry
+from packaging.version import Version
+
+requires_rust_runner = pytest.mark.skipif(
+    Version(version("maid-runner")) < Version("2.27.7"),
+    reason="Full Rust/Cargo integration requires MAID Runner 2.27.7; collector tests remain active",
+)
 
 
 def test_package_and_module_export_the_validator():
@@ -409,6 +416,7 @@ def test_foreign_crate_function_does_not_cover_local_function(tmp_path):
     assert not match_artifact_to_references(declared, refs, tmp_path)
 
 
+@requires_rust_runner
 def test_runner_validates_split_module_imports_from_another_working_directory(tmp_path):
     from maid_runner.core.validate import validate
 
@@ -1031,6 +1039,7 @@ def test_extern_crate_std_alias_does_not_expand_custom_assertions():
 @pytest.mark.parametrize(
     "import_path", ["crate::model::Widget", "super::model::Widget"]
 )
+@requires_rust_runner
 def test_split_file_inherent_methods_match_explicit_receiver_references(
     tmp_path, import_path
 ):
@@ -1137,6 +1146,7 @@ def test_raw_string_inline_path_overrides_resolve_descendant_modules(tmp_path):
     assert result.modules == ("src/custom/child.rs",)
 
 
+@requires_rust_runner
 def test_workspace_library_outside_package_preserves_identity_and_rejects_other_crate(
     tmp_path,
 ):

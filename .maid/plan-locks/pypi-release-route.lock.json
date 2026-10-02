@@ -1,0 +1,257 @@
+{
+  "manifest_path": "manifests/pypi-release-route.manifest.yaml",
+  "manifest_hash": "sha256-contract:0d6108165448979051d5a9587420ffde187853b7acc9879824e39b892e21d684",
+  "test_hashes": {
+    "tests/test_release_readiness.py": "sha256-pyast:v2:55233d4630bf374d031ae00087606e04ceb444b6e733942897175f716d49d41e"
+  },
+  "created_at": "2026-10-02T05:44:17.887765+00:00",
+  "revision": 10,
+  "revisions": [
+    {
+      "prior_manifest_hash": "sha256-contract:acacff7a69a1fbadeef8da15fbb850f7e8f11dd0def419a3a89447a002d211aa",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:4ba5073038ee52799d46d2df978f4d60b1a8098d8914e534a367cba11509cfd4"
+      },
+      "revised_at": "2026-10-02T05:44:18.477001+00:00",
+      "reason": "Migrated by maid manifest promote: manifests/drafts/pypi-release-route.manifest.yaml -> manifests/pypi-release-route.manifest.yaml",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:1d00340f636a91e8889c7e7d7a377f2096f9d0b39ecbaf62c41e30904789bca4",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:4ba5073038ee52799d46d2df978f4d60b1a8098d8914e534a367cba11509cfd4"
+      },
+      "revised_at": "2026-10-02T05:57:58.354373+00:00",
+      "reason": "Capture reviewed publishing Outcome and actual plan creation timestamp",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:70664e75a9b1254fe5f9843a9b0279a0ced325dd0b37b5e0c75443201382dcd9",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:4ba5073038ee52799d46d2df978f4d60b1a8098d8914e534a367cba11509cfd4"
+      },
+      "revised_at": "2026-10-02T05:59:16.281449+00:00",
+      "reason": "Normalize actual creation timestamp to the required UTC second format",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:e1b6aa43189ee5f371d4cb76df9ac476ca34ab1a494208f170f7f84f0596e6ee",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:4ba5073038ee52799d46d2df978f4d60b1a8098d8914e534a367cba11509cfd4"
+      },
+      "revised_at": "2026-10-02T06:18:45.931988+00:00",
+      "reason": "User requests independent Rust publication with verified 2.27.6 collection API and retained 2.27.7 integration cases",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [
+          "scope:tests/test_validator.py"
+        ],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:1af3c392765ddd978e91c0b734e317e8a9cea696eb574f8c18e6ddf385d5ef79",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:a191a25cc90d1bbb3173a67633653a6fe320f2685cd13d79dbe436cac1890bfd"
+      },
+      "revised_at": "2026-10-02T06:22:05.163869+00:00",
+      "reason": "Keep executable release guards and published dependency policy; use actual version-matrix runs for integration gate evidence",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:1af3c392765ddd978e91c0b734e317e8a9cea696eb574f8c18e6ddf385d5ef79",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:1e4a4160e417f0bdd505f8ed036a8a47bd7637d09f3ca0027abba74ab6cfa75e"
+      },
+      "revised_at": "2026-10-02T06:22:06.457591+00:00",
+      "reason": "Capture independent-release policy red evidence with retained version-gated integration checks",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:1af3c392765ddd978e91c0b734e317e8a9cea696eb574f8c18e6ddf385d5ef79",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:1e4a4160e417f0bdd505f8ed036a8a47bd7637d09f3ca0027abba74ab6cfa75e"
+      },
+      "revised_at": "2026-10-02T06:52:46.049882+00:00",
+      "reason": "Capture supported standard pytest command against pre-release configuration",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [
+          "uv run python -m pytest tests/test_release_readiness.py -q"
+        ],
+        "validate_commands_removed": [
+          "uv run --no-sync python -m pytest tests/test_release_readiness.py -q"
+        ]
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:0d6108165448979051d5a9587420ffde187853b7acc9879824e39b892e21d684",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:1e4a4160e417f0bdd505f8ed036a8a47bd7637d09f3ca0027abba74ab6cfa75e"
+      },
+      "revised_at": "2026-10-02T07:07:15.883440+00:00",
+      "reason": "Capture reviewed independent-release candidate and compatibility evidence",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:0d6108165448979051d5a9587420ffde187853b7acc9879824e39b892e21d684",
+      "prior_test_hashes": {
+        "tests/test_release_readiness.py": "sha256-pyast:v2:1e4a4160e417f0bdd505f8ed036a8a47bd7637d09f3ca0027abba74ab6cfa75e"
+      },
+      "revised_at": "2026-10-02T07:10:39.154229+00:00",
+      "reason": "Date the authorized first release while keeping publication status pending until verification",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    }
+  ],
+  "red_evidence": {
+    "red": true,
+    "captured_at": "2026-10-02T07:10:39.495120+00:00",
+    "commands": [
+      {
+        "command": "uv run python -m pytest tests/test_release_readiness.py -q",
+        "exit_code": 1,
+        "output_tail": "            \"uv lock\",\n            \"uv sync --locked\",\n            \"twine check\",\n            \"unpublished\",\n            \"2.27.6\",\n        ):\n            assert detail in releasing\n        readme = (ROOT / \"README.md\").read_text()\n        assert \"RELEASING.md\" in readme and \"CHANGELOG.md\" in readme\n        assert \"0.1.0\" in readme and \"unpublished\" in readme\n        assert \"collection\" in readme and \"2.27.7\" in readme\n>       assert \"## 0.1.0 \u2014 2026-10-02\" in (ROOT / \"CHANGELOG.md\").read_text()\nE       AssertionError: assert '## 0.1.0 \u2014 2026-10-02' in '# Changelog\\n\\n## 0.1.0 \u2014 Unreleased\\n\\n- Offline Rust definitions, bounded test references, type comparison and snap... 2.27.6; full Rust/Cargo workflows\\n  require Runner 2.27.7. Publish the plugin independently ahead of that release.\\n'\nE        +  where '# Changelog\\n\\n## 0.1.0 \u2014 Unreleased\\n\\n- Offline Rust definitions, bounded test references, type comparison and snap... 2.27.6; full Rust/Cargo workflows\\n  require Runner 2.27.7. Publish the plugin independently ahead of that release.\\n' = read_text()\nE        +    where read_text = (PosixPath('/home/atomrem/projects/codefrost-dev/maid-validator-rust') / 'CHANGELOG.md').read_text\n\ntests/test_release_readiness.py:291: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_release_readiness.py::test_release_documentation_names_pending_setup_and_runner_prerequisite\n1 failed, 10 passed in 0.17s",
+        "classification": "red"
+      }
+    ]
+  },
+  "legacy_baseline": null,
+  "agent": null,
+  "_manifest_contract": {
+    "artifacts": [],
+    "files": {
+      "create": [],
+      "edit": [],
+      "read": [
+        "tests/test_release_readiness.py"
+      ],
+      "scope": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/publish.yml",
+        ".gitignore",
+        "CHANGELOG.md",
+        "README.md",
+        "RELEASING.md",
+        "pyproject.toml",
+        "tests/test_validator.py",
+        "uv.lock"
+      ],
+      "delete": [],
+      "snapshot": []
+    },
+    "file_contract": {
+      "read": [
+        "tests/test_release_readiness.py"
+      ],
+      "scope": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "reason": "Published-dependency Python matrix using root checkout and full quality gates."
+        },
+        {
+          "path": ".github/workflows/publish.yml",
+          "reason": "Guarded index-only tag publishing, wheel smoke, OIDC and GitHub release assets."
+        },
+        {
+          "path": "pyproject.toml",
+          "reason": "Correct Runner floor, development source, package metadata and shared build pins."
+        },
+        {
+          "path": "uv.lock",
+          "reason": "Resolve exclusively from public package indexes."
+        },
+        {
+          "path": "README.md",
+          "reason": "Accurate development setup and links to publication prerequisites."
+        },
+        {
+          "path": "RELEASING.md",
+          "reason": "Exact publisher values, Runner prerequisite and operator release procedure."
+        },
+        {
+          "path": "CHANGELOG.md",
+          "reason": "Record unpublished release automation and dependency requirements."
+        },
+        {
+          "path": ".gitignore",
+          "reason": "Ignore the workflow's isolated wheel smoke environment."
+        },
+        {
+          "path": "tests/test_validator.py",
+          "reason": "Version-gate only the existing full Runner integration cases without changing their assertions."
+        }
+      ]
+    },
+    "test_files": [
+      "tests/test_release_readiness.py"
+    ],
+    "validate_commands": [
+      "uv run python -m pytest tests/test_release_readiness.py -q"
+    ],
+    "acceptance_commands": []
+  }
+}

@@ -1,0 +1,157 @@
+# manifest-kind: implementation
+# MAID manifest - a machine-checked contract for one change.
+# Declares the intent, the files it may touch, and the commands that verify it.
+# Nothing here is needed to build or run this project; safe to ignore.
+# What it is: https://github.com/mamertofabian/maid-runner
+schema: '2'
+type: feature
+created: '2026-10-02T05:44:17Z'
+goal: Prepare the Rust validator with the C# and Solidity CI and Trusted Publisher release route.
+description: 'Release the plugin independently ahead of Runner 2.27.7, as requested by the user.
+
+  Require the verified published collector API floor 2.27.6 and index-only locking.
+
+  Keep all collector/conformance tests active. Mark only the four full Runner integration
+
+  cases as requiring 2.27.7, preserving their assertions and running them against the
+
+  local Rust-enabled Runner as additional evidence. Published dependency CI uses the
+
+  same root-checkout layout and OIDC route as Solidity. Document source collection and
+
+  discovery support now, with full Cargo/exact-reference integration requiring 2.27.7.
+
+  Keep 0.1.0 unpublished in preparation docs until actual publication is verified.
+
+  The user now explicitly requests publication: prepare and review code, configure the
+
+  public GitHub repository and tag-only pypi environment, establish the pending PyPI
+
+  publisher, commit and push the reviewed candidate, wait for CI, then release v0.1.0
+
+  through the guarded OIDC workflow. Verify public-index discovery and asset hashes.
+
+  No Runner release is authorized or needed for this independent plugin release.
+
+  '
+temptations:
+- risk: Claim full Cargo validation on the older published Runner or hide collector failures.
+  instead: Keep collector tests active, show version skips only for full Runner integration, and independently
+    run those cases against 2.27.7.
+- risk: Let a local editable Runner source reach the publication path.
+  instead: Make the tag workflow reject development sources before sync and document index-only relocking.
+- risk: Grant repository-wide publication credentials or count editable tests as wheel evidence.
+  instead: Limit OIDC to the pypi job, pin actions, and require installed-wheel discovery after testing
+    and version/main guards.
+files:
+  scope:
+  - path: .github/workflows/ci.yml
+    reason: Published-dependency Python matrix using root checkout and full quality gates.
+  - path: .github/workflows/publish.yml
+    reason: Guarded index-only tag publishing, wheel smoke, OIDC and GitHub release assets.
+  - path: pyproject.toml
+    reason: Correct Runner floor, development source, package metadata and shared build pins.
+  - path: uv.lock
+    reason: Resolve exclusively from public package indexes.
+  - path: README.md
+    reason: Accurate development setup and links to publication prerequisites.
+  - path: RELEASING.md
+    reason: Exact publisher values, Runner prerequisite and operator release procedure.
+  - path: CHANGELOG.md
+    reason: Record unpublished release automation and dependency requirements.
+  - path: .gitignore
+    reason: Ignore the workflow's isolated wheel smoke environment.
+  - path: tests/test_validator.py
+    reason: Version-gate only the existing full Runner integration cases without changing their assertions.
+  read:
+  - tests/test_release_readiness.py
+validate:
+- - uv
+  - run
+  - python
+  - -m
+  - pytest
+  - tests/test_release_readiness.py
+  - -q
+outcome:
+  status: completed
+  summary: Prepared an independently publishable Rust 0.1.0 candidate using published Runner 2.27.6; full
+    Cargo integration remains gated at 2.27.7.
+  rationale: The user requests the same ahead-of-Runner release approach as Solidity. Collector and conformance
+    behavior is verified on public-index dependencies; unchanged full integration assertions are separately
+    exercised on the Rust-enabled local Runner.
+  completed_at: '2026-10-02T07:07:15.691307+00:00'
+  lessons:
+  - lesson_type: release-workflow
+    summary: Separate the verified plugin API floor from unreleased Runner orchestration; retain integration
+      assertions with explicit version gates and validate both dependency environments.
+    tags:
+    - rust
+    - publishing
+    - runner-compatibility
+    paths:
+    - pyproject.toml
+    - tests/test_validator.py
+    - RELEASING.md
+  review_notes:
+  - source: independent-read-only-rust_independent_release_review
+    severity: info
+    summary: 'Ready to merge; no blocking findings. Optional advisory: bundled sdist release-readiness
+      tests require repository-only workflow/operator files, while installation and collector functionality
+      are unaffected.'
+  validation:
+  - command:
+    - uv
+    - run
+    - python
+    - -m
+    - pytest
+    - tests
+    - -q
+    - -rs
+    status: passed
+    summary: 153 passed, four explicit Runner 2.27.7 integration skips on published 2.27.6. The index-only
+      built wheel has the same results on Python 3.10-3.14.
+  - command:
+    - uv
+    - run
+    - maid
+    - validate
+    - --quiet
+    status: passed
+    summary: Repository implementation validation passed with public-index dependencies.
+  - command:
+    - uv
+    - run
+    - maid
+    - test
+    status: passed
+    summary: Both manifest commands passed.
+  - command:
+    - uv
+    - build
+    status: passed
+    summary: Pinned backend builds wheel/sdist, Twine 7 checks both, and runtime-only public-index installation
+      discovers active RustValidator. A separate wheel environment with local Runner 2.27.7 passes all
+      157 cases.
+  - command:
+    - maid
+    - verify
+    - --profile
+    - deep
+    - --manifest-dir
+    - manifests
+    - --file-tracking-scope
+    - task
+    - --plan-lock-scope
+    - task
+    - --test-scope
+    - task
+    - --require-plan-lock
+    - --require-red-evidence
+    - --since
+    - ddbfdd5
+    status: passed
+    summary: Local Runner 2.27.7 task-scoped deep verification passed all 11 stages. Repository-wide artifact
+      coverage has a confirmed unsupported uv --no-sync wrapper issue; direct coverage shows validator.py
+      at 89% with all declared methods exercised. Bug report recorded separately.

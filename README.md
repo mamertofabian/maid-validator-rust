@@ -7,29 +7,35 @@ does not invoke Cargo, compile code, access the network, or expand macros.
 
 ## Development and installation
 
-Python 3.10+ is supported. For development alongside the sibling Runner checkout:
+Python 3.10-3.14 is tested. Plugin collection, snapshots and discovery work with
+published **MAID Runner 2.27.6+**. Full Rust project validation additionally needs
+**Runner 2.27.7+** for `.rs`/inline discovery, Cargo target accounting and exact
+reference matching. The plugin can be published independently before that Runner
+release, following the same approach as the Solidity plugin.
 
 ```bash
-uv sync --group dev
-uv pip install --python .venv/bin/python --no-deps -e ../maid-runner
-uv run --no-sync maid validators
-uv run --no-sync python -m pytest tests/ -q
-uv run --no-sync ruff check src/ tests/
-uv run --no-sync black --target-version py310 --check src/ tests/
+uv sync --locked
+uv run maid validators
+uv run python -m pytest tests/ -q -rs
+uv run ruff check src/ tests/
+uv run black --check src/ tests/
+uv run maid validate
+uv run maid test
 uv build
 ```
 
-Use `--no-sync` while testing the sibling checkout: plain `uv run` restores the
-published Runner version in `uv.lock`. The package can collect Rust with Runner
-2.27.6+, but the Cargo/discovery integration requires the updated Runner checkout
-until that support is released. To install locally into another Runner environment:
+The release lock resolves only published dependencies. On Runner 2.27.6, the
+four full integration cases show explicit skips; all collector/conformance and
+release tests run. Those integration assertions run automatically on 2.27.7+.
+To exercise them now against the sibling checkout, use a separate environment
+with `../maid-runner` installed, so the release lock stays index-only.
 
-```bash
-uv pip install --python /path/to/environment/bin/python /path/to/maid-validator-rust
-```
+Version **0.1.0 is unpublished** until the release is verified. See
+[RELEASING.md](RELEASING.md) and [CHANGELOG.md](CHANGELOG.md).
 
-The `maid_runner.validators` entry point discovers `RustValidator` for `.rs`.
-Cargo is required for Runner's offline target metadata and executable Rust tests.
+After publication, install `maid-validator-rust` from PyPI. Its
+`maid_runner.validators` entry point discovers `RustValidator` for `.rs`.
+Cargo is required for the full Runner integration and executable Rust tests.
 
 ## Artifact mapping
 

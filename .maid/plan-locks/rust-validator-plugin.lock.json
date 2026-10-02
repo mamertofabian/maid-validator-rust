@@ -2,11 +2,12 @@
   "manifest_path": "manifests/rust-validator-plugin.manifest.yaml",
   "manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
   "test_hashes": {
-    "tests/test_validator.py": "sha256-pyast:v2:df0421efcbe368b55a367e819b31875a9a37fd5c46c5c5f92eccbe1dcf81a9ab",
-    "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+    "tests/test_validator.py": "sha256-pyast:v2:b3489948f5d9389c0d040220cf6b282b3dae52362df710ce6aec5682aecb627c",
+    "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479",
+    "tests/test_release_readiness.py": "sha256-pyast:v2:55233d4630bf374d031ae00087606e04ceb444b6e733942897175f716d49d41e"
   },
   "created_at": "2026-10-02T00:35:25.810534+00:00",
-  "revision": 29,
+  "revision": 32,
   "revisions": [
     {
       "prior_manifest_hash": "sha256-contract:5e060c16c03543a6981961e9259d5e553dabc04066caa16d4dd6dd95dcc98257",
@@ -520,6 +521,62 @@
         "validate_commands_added": [],
         "validate_commands_removed": []
       }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:df0421efcbe368b55a367e819b31875a9a37fd5c46c5c5f92eccbe1dcf81a9ab",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479"
+      },
+      "revised_at": "2026-10-02T06:22:06.252344+00:00",
+      "reason": "Retain collector red evidence and unchanged integration assertions while defining the supported Runner version boundary",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:f79fe6d1fe477eb71baed06e9fc3915f448530836e623e6e78fc05eabd4416bc",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:b3489948f5d9389c0d040220cf6b282b3dae52362df710ce6aec5682aecb627c",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479",
+        "tests/test_release_readiness.py": "sha256-pyast:v2:1e4a4160e417f0bdd505f8ed036a8a47bd7637d09f3ca0027abba74ab6cfa75e"
+      },
+      "revised_at": "2026-10-02T06:52:45.808583+00:00",
+      "reason": "Keep unchanged collector contract and original command; retain the version-bound integration assertions",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
+    },
+    {
+      "prior_manifest_hash": "sha256-contract:20eb4fdbef2600f16859d1e60fd65fc68cb895e8465f3104907b8ae154f07506",
+      "prior_test_hashes": {
+        "tests/test_validator.py": "sha256-pyast:v2:b3489948f5d9389c0d040220cf6b282b3dae52362df710ce6aec5682aecb627c",
+        "tests/test_conformance.py": "sha256-pyast:v2:3a5040d142d9502e2fe2be8682781b6d0d3ae1e39a8203b47ce10b674932c479",
+        "tests/test_release_readiness.py": "sha256-pyast:v2:1e4a4160e417f0bdd505f8ed036a8a47bd7637d09f3ca0027abba74ab6cfa75e"
+      },
+      "revised_at": "2026-10-02T07:13:17.220101+00:00",
+      "reason": "Refresh the shared test-directory fingerprint after release-date metadata changed; collector assertions and command are unchanged",
+      "agent": null,
+      "contract_delta": {
+        "artifacts_added": [],
+        "artifacts_removed": [],
+        "files_added": [],
+        "files_removed": [],
+        "validate_commands_added": [],
+        "validate_commands_removed": []
+      }
     }
   ],
   "red_evidence": {
@@ -799,6 +856,7 @@
     },
     "test_files": [
       "tests/test_conformance.py",
+      "tests/test_release_readiness.py",
       "tests/test_validator.py"
     ],
     "validate_commands": [
